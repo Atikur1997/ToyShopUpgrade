@@ -9,6 +9,7 @@ import ToyDetails from "../Pages/ToyDetails/ToyDetails";
 import PrivateRoute from "../../Provider/PrivateRoute";
 import Loading from "../Pages/Loading/Loading";
 import Alltoys from "../Pages/Alltoys/Alltoys";
+import About from "../Pages/About/About";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "/allToys",
         Component: Alltoys,
+      },
+      {
+        path: "/about",
+        Component: About,
       },
     ],
   },

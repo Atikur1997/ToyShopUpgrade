@@ -12,9 +12,9 @@ const Alltoys = () => {
   const singleToy = use(promiseCard);
 
   return (
-    <div className=" mx-auto py-10 my-10">
+    <div className=" mx-auto py-10">
       {/* Swiper Carousel with Gradient Cards */}
-      <div className="w-11/12 mx-auto mb-10 rounded-3xl overflow-hidden shadow-2xl">
+      <div className="bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 w-11/12 mx-auto mb-10 rounded-3xl overflow-hidden shadow-2xl py-10">
         <Swiper
           effect="coverflow"
           grabCursor={true}
