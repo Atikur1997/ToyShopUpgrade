@@ -8,35 +8,37 @@ import Home from "../Pages/Home/Home";
 import ToyDetails from "../Pages/ToyDetails/ToyDetails";
 import PrivateRoute from "../../Provider/PrivateRoute";
 import Loading from "../Pages/Loading/Loading";
-
+import Alltoys from "../Pages/Alltoys/Alltoys";
 
 export const router = createBrowserRouter([
-    {
-        path: "/",
-        Component: Root,
-        errorElement: <Error404></Error404>,
-        children: [
-            {
-                index: true,
-                Component: Home,
-                hydrateFallbackElement: <Loading></Loading>
-            },
-            {
-                path: "/login",
-                Component: Login,
-            },
-            {
-                path: "/registration",
-                Component: Registration,
-            },
-            {
-                path: "/toyDetails/:id",
-                loader: () => fetch('/toyData.json'),
-                element: (<PrivateRoute>
-                    <ToyDetails></ToyDetails>
-                </PrivateRoute>),
-                hydrateFallbackElement: <Loading></Loading>
-            }
-        ]
-    }
-])
+  {
+    path: "/",
+    Component: Root,
+    errorElement: <Error404></Error404>,
+    children: [
+      {
+        index: true,
+        Component: Home,
+        hydrateFallbackElement: <Loading></Loading>,
+      },
+      {
+        path: "/login",
+        Component: Login,
+      },
+      {
+        path: "/registration",
+        Component: Registration,
+      },
+      {
+        path: "/toyDetails/:id",
+        loader: () => fetch("/toyData.json"),
+        element: <ToyDetails></ToyDetails>,
+        hydrateFallbackElement: <Loading></Loading>,
+      },
+      {
+        path: "/allToys",
+        Component: Alltoys,
+      },
+    ],
+  },
+]);
