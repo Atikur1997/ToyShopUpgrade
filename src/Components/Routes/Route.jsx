@@ -10,6 +10,7 @@ import PrivateRoute from "../../Provider/PrivateRoute";
 import Loading from "../Pages/Loading/Loading";
 import Alltoys from "../Pages/Alltoys/Alltoys";
 import About from "../Pages/About/About";
+import Contact from "../Pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         Component: About,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
       },
     ],
   },
