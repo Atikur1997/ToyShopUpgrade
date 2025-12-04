@@ -1,10 +1,11 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router";
+import { useLoaderData, useParams, useNavigate } from "react-router";
 import { Star } from "lucide-react";
 
 const ToyDetails = () => {
   const toyData = useLoaderData();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const toy = toyData.find((t) => t.toyId === parseInt(id));
 
@@ -15,6 +16,32 @@ const ToyDetails = () => {
       </div>
     );
   }
+
+  // Add to cart handler
+  const handleAddToCart = () => {
+    // Get existing parcels from localStorage
+    const storedParcels = JSON.parse(localStorage.getItem("parcels")) || [];
+
+    // Check if toy is already in cart
+    const exists = storedParcels.find((p) => p.id === toy.toyId);
+    if (exists) {
+      alert("This toy is already in your parcels!");
+      return;
+    }
+
+    // Add new toy to parcels
+    const newParcel = {
+      id: toy.toyId,
+      name: toy.toyName,
+      price: toy.price,
+      quantity: 1,
+    };
+
+    const updatedParcels = [...storedParcels, newParcel];
+    localStorage.setItem("parcels", JSON.stringify(updatedParcels));
+    alert("Toy added to My Parcels!");
+    navigate("/dashboard"); // Optional: redirect to My Parcels page
+  };
 
   return (
     <div className="w-11/12 md:w-10/12 lg:w-8/12 mx-auto my-10 space-y-12">
@@ -64,8 +91,11 @@ const ToyDetails = () => {
 
           {/* Add to Cart */}
           <div className="mt-6">
-            <button className="btn btn-primary w-full py-3 text-lg font-semibold shadow-lg hover:shadow-2xl transition-all duration-300">
-              🛒 Add to Cart
+            <button
+              onClick={handleAddToCart}
+              className="btn btn-primary w-full py-3 text-lg font-semibold shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              🛒 Add to My Parcels
             </button>
           </div>
         </div>

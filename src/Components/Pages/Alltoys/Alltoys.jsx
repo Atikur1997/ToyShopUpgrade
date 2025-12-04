@@ -50,7 +50,7 @@ const Alltoys = () => {
                   <img
                     src={toy.pictureURL}
                     alt={toy.toyName}
-                    className="w-full h-full object-cover rounded-2xl animate-bounce-slow"
+                    className="w-full h-full object-fit rounded-2xl animate-bounce-slow"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 rounded-b-2xl">
                     <h2 className="text-white text-xl font-bold">
